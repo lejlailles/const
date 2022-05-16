@@ -1,0 +1,5 @@
+jRadioButtonStataChanged
+
+JRadioButton rdb=(JRadioButton)evt.getSource();
+String info=rdb.getText();
+this.setTitle(info);

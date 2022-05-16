@@ -1,0 +1,24 @@
+git config –global user.name “[name]”  
+
+git config –global user.email “[email address]”  
+
+git init
+
+git add .
+
+git commit -m ""
+
+git push
+
+git status
+
+git log
+git log --oneline
+
+git branch
+
+git checkout [branch name] or [version]
+
+git remote add [variable name] [Remote Server Link]  
+
+git pull

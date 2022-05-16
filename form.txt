@@ -1,0 +1,40 @@
+ private void valtozas(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_valtozas
+        voltValtozas = true;
+    }
+
+    private void kilepes(){
+        if (voltValtozas) {
+            if (felugro("Biztos kilép?") == JOptionPane.OK_OPTION) {                
+                System.exit(0);
+            }
+        } else {
+            System.exit(0);
+        }
+    }
+    
+    private void mentes() {
+        JFileChooser jfc = new JFileChooser(new File("."));
+        jfc.setDialogTitle("Megnyitás...");
+        
+        FileNameExtensionFilter filterKepek = new FileNameExtensionFilter("képek (*.jpg, *.gif)", "jpg", "gif");
+        FileNameExtensionFilter filterTxt = new FileNameExtensionFilter("csak szöveg (*.txt)", "txt");
+        
+        jfc.addChoosableFileFilter(filterKepek);
+        jfc.addChoosableFileFilter(filterTxt);
+        
+        jfc.setFileFilter(filterTxt);
+        
+        int gomb = jfc.showOpenDialog(jPanel1);
+        if(gomb == JFileChooser.APPROVE_OPTION){
+            String fajlNev = "Fájl neve: " + jfc.getSelectedFile().getName();
+            String eleres = "Elérése: " + jfc.getSelectedFile().getPath();
+            String uzenet = fajlNev + "\n" + eleres;
+            felugro(uzenet);
+        }
+    }
+    
+    private int felugro(String uzenet) {
+        Icon icon = new ImageIcon(this.getClass().getResource("res/ikon.jpg"));
+            //JOptionPane.showMessageDialog(rootPane, "Fájlnév", "Kérdés", JOptionPane.INFORMATION_MESSAGE, icon); 
+            return JOptionPane.showConfirmDialog(rootPane, uzenet, "Kérdés", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, icon);
+    }

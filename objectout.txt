@@ -1,0 +1,33 @@
+ try {
+            ObjectOutputStream objKi = new ObjectOutputStream(new FileOutputStream("galeria.bin"));
+            objKi.writeObject(galeria);
+            objKi.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        galeria = null;
+        
+        try {
+            ObjectInputStream objBe = new ObjectInputStream(new FileInputStream("galeria.bin"));
+            galeria = (Galeria)objBe.readObject();
+            
+            objBe.close();
+            
+            System.out.println("Visszaállítás:");
+            for (KiallitasiTargy targy : galeria) {
+                System.out.println(targy);
+            }
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+}

@@ -1,0 +1,14 @@
+    @Override
+    public Iterator<KiallitasiTargy> iterator() {
+        return Collections.unmodifiableList(targyak).iterator();
+    }
+    
+    public List<KiallitasiTargy> rendezCimSzerint(){
+        Collections.sort(targyak, KiallitasiTargy.cimRendezo());
+        return Collections.unmodifiableList(targyak);
+    }
+    
+    public List<KiallitasiTargy> rendezKeszitoSzerint(){
+        Collections.sort(targyak, KiallitasiTargy.keszitoRendezo());
+        return Collections.unmodifiableList(targyak);
+    }
